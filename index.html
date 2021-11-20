@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>VUE</title>
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="estilos.css" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <header class="bg-dark text-center text-white">
+            <span class="h2">Productos La Tiendita</span>
+        </header>
+        <section class="container text-center full-height" id="cont">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 p-3 columna">
+                    <button class="btn btn-warning" @click="mostrarBoton1 = true">Comprar</button>
+                    <img id="img1" src="Papas.jfif">
+                    <hr/>
+                    <button class="btn btn-danger" @click="mostrarBoton2 = true">Comprar</button>
+                    <img id="img1" src="Doritos.jfif">
+                    <hr/>
+                    <button class="btn btn-primary" @click="mostrarBoton3 = true">Comprar</button>
+                    <img id="img1" src="Chetos.jpg">
+                    <hr/>
+                    <br>
+                    <button class="btn btn-success" @click="mostrarBoton4 = true">Comprar</button>
+                    <img id="imagen" src="Refrescos.png">
+                    <br>
+                    <br>
+                    <br>
+                    <hr/>
+
+                    <alerta v-show="mostrarBoton1" @ocultar="mostrarBoton1 = false" tipo="alerta--info" posicion="alerta--arriba--izquierda">
+                        <template slot="header">
+                            Papas
+                        </template>
+                        <template slot="contenido">
+                            Usted esta apuntode comprar unas Papas                        
+                        </template>
+                        <template slot="footer">
+                            A que no puedes comer solo una
+                        </template>
+                    </alerta>
+
+                    <alerta v-show="mostrarBoton2" @ocultar="mostrarBoton2 = false" tipo="alerta--exito" posicion="alerta--abajo--izquierda">
+                        <template slot="header">
+                            Doritos
+                        </template>
+                        <template slot="contenido">
+                            Usted esta apuntode comprar unos Doritos
+                        </template>
+                        <template slot="footer">
+                            El mismo sabor originar
+                        </template>
+                    </alerta>
+
+                    <alerta v-show="mostrarBoton3" @ocultar="mostrarBoton3 = false" tipo="alerta--advertencia" posicion="alerta--abajo2--izquierda">
+                        <template slot="header">
+                            Chetos
+                        </template>
+                        <template slot="contenido">
+                            Usted esta apuntode comprar unos Chetos
+                        </template>
+                        <template slot="footer">
+                            Ahora con más queso
+                        </template>
+                    </alerta>
+
+                    <alerta v-show="mostrarBoton4" @ocultar="mostrarBoton4 = false" 
+                    tipo="alerta--error" posicion="alerta--abajo3--izquierda"
+                    frase="Que Onda..." :listado="tipos">
+                        <template slot="header">
+                            Sodas Disponibles
+                        </template>
+                        <template slot="contenido">
+                            <!--Hay algun error, favor de comprobar su codigo-->
+                        </template>
+                        <template slot="datos" slot-scope="errores">
+                            <li>{{errores.nombre}}</li>
+                        </template>
+                        <template slot="footer">
+                            El mismo precio de siempre
+                        </template>
+                    </alerta>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <!--vue.resource-->
+                    <!--Recorrer el arreglo de datos para poder ver los resultados-->
+                    <h2>Personas que Compraron Productos</h2>
+                    <hr/>
+                    <img v-for="persona in personasAxios" v-bind:src="persona.picture.thumbnail" :title="persona.name.first">
+                    <hr>
+                    <hr>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-danger text-center text-white">
+            <span class="h2">Por: @José Guadalupe Gómez Gómez</span>
+        </footer>
+        <!--Generar un template base para cada cajita-->
+        <template id="mensajeProductos">
+            <article class="alerta" :class="[tipo, posicion]">
+                <h3 class="alerta_header">
+                    <button class="btn btn-primary" @click="ocultarMensaje()">X</button>
+                    <!--Hola-->
+                    <slot name="header">Bienvenidos</slot>
+                </h3>
+                <span>
+                    <slot>
+                        <!--Iniciamos el sistema arrancado-->
+                    </slot>
+                </span>
+                <p class="alerta_contenido">
+                    <!--Un parrafo definido para el mensaje-->
+                    <slot name="contenido"></slot>
+                    <slot name="datos" v-for="error in listado" :nombre="error"></slot>
+                </p>
+                <span class="alerta_footer">
+                    <!--Contenido del footer-->
+                    <slot name="footer" :tipo="alerta"></slot>
+                </span>
+            </article>
+        </template>
+        
+        <script src="funciones.js"></script>
+    </body>
+</html>

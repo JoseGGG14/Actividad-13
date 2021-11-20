@@ -1,0 +1,108 @@
+html, body {
+    height: 105%;
+    background-color: palegreen;
+}
+
+    .full-height {
+        height: 100%;
+    }
+
+    section {
+        background-color: palegreen;
+        position: relative;
+    }
+
+        .columna {
+            position: static;
+        }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 6%;
+    }
+
+    .alerta{
+        width: 300px;
+        border-radius: 15px;
+        background-color: aqua;
+        border: 1px solid white;
+        box-shadow: 1px 1px 2px gray;
+        position: absolute;
+    }
+
+    .alerta_header{
+        border-bottom: 1px solid white;
+        padding: 1px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .alerta_contenido{
+        font-size: 14px;
+        padding: 1px;
+    }
+
+    .alerta_footer{
+        border-top: 1px solid white;
+        text-align: center;
+        padding: 1px;
+        font-size: 12px;
+        display: block;
+    }
+
+/* Modificadores */
+/* Estilo */
+    .alerta--info{
+        background-color: yellow;
+    }
+    .alerta--exito{
+        background-color: red;
+    }
+    .alerta--advertencia{
+        background-color: turquoise;
+    }
+    .alerta--error{
+        background-color: green;
+    }
+
+/* Posiciones */
+    .alerta--arriba--izquierda{
+        left: 10px;
+        top: 10px;
+    }
+    .alerta--abajo--izquierda{
+        left: 10px;
+        top: 140px;
+    }
+    .alerta--abajo2--izquierda{
+        left: 10px;
+        top: 273px;
+    }
+    .alerta--abajo3--izquierda{
+        left: 10px;
+        top: 423px;
+    }
+
+    #seccion{
+        width: 30%;
+        height: 94%;
+        margin-left: 500px;
+    }
+
+    #img1{
+        width: 100px;
+        height: 100px;
+        margin-left: 170px;
+    }
+    #imagen{
+        width: 150px;
+        height: 100px;
+        margin-left: 120px;
+    }
+
+/* Bloques */
+
+
+/* Elementos */
